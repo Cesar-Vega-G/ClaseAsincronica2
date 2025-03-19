@@ -60,7 +60,7 @@ public class CircularSinglyLinkedList
     }
 
     // Insertar al inicio
-    public void Alinicio(int value)
+    public void InsertAtStart(int value)
     {
         Node newNode = new Node(value);
         if (this.tail == null)
@@ -76,8 +76,8 @@ public class CircularSinglyLinkedList
         this.size++;
     }
 
-    // Insertar al final
-    public void Alfinal(int value)
+    // Insertar al final2
+    public void InsertAtEnd(int value)
     {
         Node newNode = new Node(value);
         if (this.tail == null)
@@ -95,7 +95,7 @@ public class CircularSinglyLinkedList
     }
 
     // Insertar en una posición indicada
-    public void InsertarEn(int value, int index)
+    public void InsertAt(int value, int index)
     {
         if (index < 0 || index > this.size)
         {
@@ -104,25 +104,21 @@ public class CircularSinglyLinkedList
 
         if (index == 0)
         {
-            Alinicio(value);
+            InsertAtStart(value);
             return;
         }
 
         Node newNode = new Node(value);
         Node current = this.tail.Next;
-
-        // Recorre la lista hasta el nodo antes del índice donde se insertará el nuevo nodo
         for (int i = 0; i < index - 1; i++)
         {
             current = current.Next;
         }
 
-        // Inserta el nuevo nodo
         newNode.Next = current.Next;
         current.Next = newNode;
 
-        // Si el nodo insertado es el último, actualizamos el tail
-        if (newNode.Next == this.tail.Next)
+        if (current == this.tail)
         {
             this.tail = newNode;
         }
@@ -130,9 +126,8 @@ public class CircularSinglyLinkedList
         this.size++;
     }
 
-
     // Eliminar al inicio
-    public void QuitarInicio()
+    public void RemoveFromStart()
     {
         if (this.tail == null)
         {
@@ -151,7 +146,7 @@ public class CircularSinglyLinkedList
     }
 
     // Eliminar al final
-    public void QuitarFinal()
+    public void RemoveFromEnd()
     {
         if (this.tail == null)
         {
@@ -185,7 +180,7 @@ public class CircularSinglyLinkedList
 
         if (index == 0)
         {
-            QuitarInicio();
+            RemoveFromStart();
             return;
         }
 
