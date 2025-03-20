@@ -301,6 +301,21 @@ public class CircularSinglyLinkedListTests
     }
 
     #endregion
+    [TestMethod]
+    public void Test_Main_ExecutesWithoutError()
+    {
+        // Redirigir la salida de la consola para capturar cualquier error inesperado
+        using (StringWriter sw = new StringWriter())
+        {
+            Console.SetOut(sw);
+
+            // Llamar a Main
+            Program.Main();
+
+            // Verificar que no hubo salida inesperada (puede ser vacío si Main no hace nada)
+            Assert.AreEqual(string.Empty, sw.ToString());
+        }
+    }
 }
 
 
